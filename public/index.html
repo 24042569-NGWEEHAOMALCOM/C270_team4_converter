@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter - Temperature & Distance</title>
+  <meta name="description" content="Simple and efficient converter for temperature (Celsius to Fahrenheit) and distance (Kilometers to Miles)">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- Background Design -->
+    <div class="background">
+      <div class="grid-pattern"></div>
+      <div class="accent-circle circle-1"></div>
+      <div class="accent-circle circle-2"></div>
+      <div class="accent-circle circle-3"></div>
+      <div class="diagonal-line line-1"></div>
+      <div class="diagonal-line line-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>Unit Converter</h1>
+        <p>Convert temperature and distance with ease</p>
+      </div>
+
+      <div class="converters">
+        <!-- Temperature Converter -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="icon-badge icon-primary">
+                <span>°</span>
+              </div>
+              <span>Temperature</span>
+            </div>
+            <p class="card-description">Convert between Celsius and Fahrenheit</p>
+          </div>
+          <div class="card-content">
+            <div class="input-group">
+              <label for="celsius">Celsius</label>
+              <div class="input-wrapper">
+                <input 
+                  type="number" 
+                  id="celsius" 
+                  placeholder="0"
+                  step="any"
+                >
+                <span class="unit">°C</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div class="input-group">
+              <label for="fahrenheit">Fahrenheit</label>
+              <div class="input-wrapper">
+                <input 
+                  type="number" 
+                  id="fahrenheit" 
+                  placeholder="32"
+                  step="any"
+                >
+                <span class="unit">°F</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Distance Converter -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="icon-badge icon-accent">
+                <span>↔</span>
+              </div>
+              <span>Distance</span>
+            </div>
+            <p class="card-description">Convert between Kilometers and Miles</p>
+          </div>
+          <div class="card-content">
+            <div class="input-group">
+              <label for="kilometers">Kilometers</label>
+              <div class="input-wrapper">
+                <input 
+                  type="number" 
+                  id="kilometers" 
+                  placeholder="0"
+                  step="any"
+                >
+                <span class="unit">km</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div class="input-group">
+              <label for="miles">Miles</label>
+              <div class="input-wrapper">
+                <input 
+                  type="number" 
+                  id="miles" 
+                  placeholder="0"
+                  step="any"
+                >
+                <span class="unit">mi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
