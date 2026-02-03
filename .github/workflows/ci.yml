@@ -31,7 +31,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    needs: test
 
     steps:
       - name: Checkout repository
@@ -47,7 +46,6 @@ jobs:
 
   docker-build:
     runs-on: ubuntu-latest
-    needs: test
 
     steps:
       - name: Checkout repository
@@ -62,7 +60,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: converter-app:cidocker build -t converter-app .
+          tags: converter-app:ci
 
   deploy:
     name: Deploy to ECS
