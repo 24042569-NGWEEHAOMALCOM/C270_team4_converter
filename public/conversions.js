@@ -26,7 +26,7 @@ function milesToKilometers(mi) {
   return mi / 0.621371;
 }
 
-/* Export for Jest (Node.js) */
+/* Export for Jest ( Node.js ) */
 module.exports = {
   celsiusToFahrenheit,
   fahrenheitToCelsius,
