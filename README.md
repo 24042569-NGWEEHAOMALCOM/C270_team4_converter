@@ -70,21 +70,25 @@ CI/CD: GitHub Actions
 
 .
 ├── public/
-│   ├── index.html          # Application UI
-│   ├── style.css           # Styling
-│   ├── script.js           # UI logic & event handling
-│   └── conversions.js      # Conversion logic (unit-tested)
+│   ├── index.html        # Application UI
+│   ├── style.css         # Styling
+│   ├── script.js         # UI logic & event handling
+│   └── conversions.js   # Conversion logic (unit-tested)
+│
 ├── tests/
-│   └── conversions.test.js # Jest unit tests
+│   └── conversions.test.js   # Jest unit tests
+│
 ├── .github/
 │   └── workflows/
-│       └── ci.yml          # CI pipeline definition
+│       └── ci.yml        # CI pipeline definition
+│
 ├── Dockerfile
 ├── .dockerignore
 ├── package.json
 ├── package-lock.json
 ├── .gitignore
 └── README.md
+
 
 
 Containerisation: Docker (Nginx)
