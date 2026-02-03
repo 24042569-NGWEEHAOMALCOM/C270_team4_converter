@@ -12,7 +12,7 @@ function fahrenheitToCelsius(f) {
 // --- V2.1 Kelvin support ---
 function celsiusToKelvin(c) {
   if (typeof c !== "number" || Number.isNaN(c)) throw new Error("Invalid number");
-  return c + 270; // WRONG on purpose for demo
+  return c + 273.15;
 }
 
 function kelvinToCelsius(k) {
