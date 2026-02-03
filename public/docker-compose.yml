@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  unit-converter:
+    # Use the image name you used in your CI/CD pipeline
+    image: converter:ci 
+    ports:
+      - "8080:80"
+    deploy:
+      replicas: 5        # This is the "Orchestration" part: 5 instances!
+      restart_policy:
+        condition: on-failure
