@@ -1,8 +1,12 @@
+// ===== Input elements =====
 const celsiusInput = document.getElementById("celsius");
 const fahrenheitInput = document.getElementById("fahrenheit");
+const kelvinInput = document.getElementById("kelvin");
+
 const kilometersInput = document.getElementById("kilometers");
 const milesInput = document.getElementById("miles");
 
+// ===== Helpers =====
 function parseInput(value) {
   // Allow empty or just "-" while user is typing a negative number
   if (value === "" || value === "-") return null;
@@ -12,40 +16,66 @@ function parseInput(value) {
 }
 
 function setIfDifferent(input, newValue) {
-  // Avoid unnecessary writes while typing
-  if (input.value !== newValue) input.value = newValue;
+  if (input.value !== newValue) {
+    input.value = newValue;
+  }
 }
 
-// Temperature handlers
+// ===== Temperature handlers (V2.1) =====
+
+// Celsius → Fahrenheit & Kelvin
 celsiusInput.addEventListener("input", (e) => {
   const n = parseInput(e.target.value);
-  if (n === null) return setIfDifferent(fahrenheitInput, "");
+  if (n === null) {
+    setIfDifferent(fahrenheitInput, "");
+    setIfDifferent(kelvinInput, "");
+    return;
+  }
 
-  const f = celsiusToFahrenheit(n);
-  setIfDifferent(fahrenheitInput, f.toFixed(2));
+  setIfDifferent(fahrenheitInput, celsiusToFahrenheit(n).toFixed(2));
+  setIfDifferent(kelvinInput, celsiusToKelvin(n).toFixed(2));
 });
 
+// Fahrenheit → Celsius & Kelvin
 fahrenheitInput.addEventListener("input", (e) => {
   const n = parseInput(e.target.value);
-  if (n === null) return setIfDifferent(celsiusInput, "");
+  if (n === null) {
+    setIfDifferent(celsiusInput, "");
+    setIfDifferent(kelvinInput, "");
+    return;
+  }
 
-  const c = fahrenheitToCelsius(n);
-  setIfDifferent(celsiusInput, c.toFixed(2));
+  setIfDifferent(celsiusInput, fahrenheitToCelsius(n).toFixed(2));
+  setIfDifferent(kelvinInput, fahrenheitToKelvin(n).toFixed(2));
 });
 
-// Distance handlers
+// Kelvin → Celsius & Fahrenheit
+kelvinInput.addEventListener("input", (e) => {
+  const n = parseInput(e.target.value);
+  if (n === null || n < 0) {
+    setIfDifferent(celsiusInput, "");
+    setIfDifferent(fahrenheitInput, "");
+    return;
+  }
+
+  setIfDifferent(celsiusInput, kelvinToCelsius(n).toFixed(2));
+  setIfDifferent(fahrenheitInput, kelvinToFahrenheit(n).toFixed(2));
+});
+
+// ===== Distance handlers (unchanged) =====
+
+// Kilometers → Miles
 kilometersInput.addEventListener("input", (e) => {
   const n = parseInput(e.target.value);
   if (n === null) return setIfDifferent(milesInput, "");
 
-  const mi = kilometersToMiles(n);
-  setIfDifferent(milesInput, mi.toFixed(2));
+  setIfDifferent(milesInput, kilometersToMiles(n).toFixed(2));
 });
 
+// Miles → Kilometers
 milesInput.addEventListener("input", (e) => {
   const n = parseInput(e.target.value);
   if (n === null) return setIfDifferent(kilometersInput, "");
 
-  const km = milesToKilometers(n);
-  setIfDifferent(kilometersInput, km.toFixed(2));
+  setIfDifferent(kilometersInput, milesToKilometers(n).toFixed(2));
 });

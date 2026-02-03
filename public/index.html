@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit Converter - Temperature & Distance</title>
-  <meta name="description" content="Simple and efficient converter for temperature (Celsius to Fahrenheit) and distance (Kilometers to Miles)">
+  <meta name="description" content="Simple and efficient converter for temperature (Celsius, Fahrenheit, Kelvin) and distance (Kilometers to Miles)">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,15 +35,16 @@
               </div>
               <span>Temperature</span>
             </div>
-            <p class="card-description">Convert between Celsius and Fahrenheit</p>
+            <p class="card-description">Convert between Celsius, Fahrenheit and Kelvin</p>
           </div>
+
           <div class="card-content">
             <div class="input-group">
               <label for="celsius">Celsius</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="celsius" 
+                <input
+                  type="number"
+                  id="celsius"
                   placeholder="0"
                   step="any"
                 >
@@ -56,13 +57,29 @@
             <div class="input-group">
               <label for="fahrenheit">Fahrenheit</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="fahrenheit" 
+                <input
+                  type="number"
+                  id="fahrenheit"
                   placeholder="32"
                   step="any"
                 >
                 <span class="unit">°F</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div class="input-group">
+              <label for="kelvin">Kelvin</label>
+              <div class="input-wrapper">
+                <input
+                  type="number"
+                  id="kelvin"
+                  placeholder="273.15"
+                  step="any"
+                  min="0"
+                >
+                <span class="unit">K</span>
               </div>
             </div>
           </div>
@@ -79,13 +96,14 @@
             </div>
             <p class="card-description">Convert between Kilometers and Miles</p>
           </div>
+
           <div class="card-content">
             <div class="input-group">
               <label for="kilometers">Kilometers</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="kilometers" 
+                <input
+                  type="number"
+                  id="kilometers"
                   placeholder="0"
                   step="any"
                 >
@@ -98,9 +116,9 @@
             <div class="input-group">
               <label for="miles">Miles</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="miles" 
+                <input
+                  type="number"
+                  id="miles"
                   placeholder="0"
                   step="any"
                 >
@@ -109,12 +127,13 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </main>
 
+  <!-- Load conversion functions first, then the UI logic -->
   <script src="conversions.js"></script>
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
