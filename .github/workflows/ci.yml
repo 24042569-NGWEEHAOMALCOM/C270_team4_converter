@@ -56,6 +56,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile
+          file: ./public/Dockerfile
           push: false
-          tags: c270-team4-converter:ci
+          tags: converter-app:ci
