@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "echo \"No tests yet\"",
+    "test": "jest",
     "build": "echo \"Static site - no build step\""
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
   }
 }
