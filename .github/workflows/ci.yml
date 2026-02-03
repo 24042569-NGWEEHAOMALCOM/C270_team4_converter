@@ -60,7 +60,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: converter-app:cidocker build -t converter-app .
+          tags: converter-app:ci
 
   deploy:
     name: Deploy to ECS
