@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit Converter - Temperature & Distance</title>
-  <meta name="description" content="Simple and efficient converter for temperature (Celsius to Fahrenheit) and distance (Kilometers to Miles)">
+  <meta name="description" content="Simple and efficient converter for temperature (Celsius, Fahrenheit, Kelvin), distance (Kilometers to Miles), and measurements (kg/lbs, cm/ft/in)">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <!-- Background Design -->
     <div class="background">
       <div class="grid-pattern"></div>
       <div class="accent-circle circle-1"></div>
@@ -22,11 +21,22 @@
     <div class="container">
       <div class="header">
         <h1>Unit Converter</h1>
-        <p>Convert temperature and distance with ease</p>
+        <p>Convert temperature, distance and measurements with ease</p>
+
+        <div class="input-group" style="max-width: 260px; margin: 14px auto 0;">
+          <label for="precision">Precision (decimal places)</label>
+          <div class="input-wrapper">
+            <select id="precision" style="width: 100%; padding: 10px 12px; border-radius: 10px;">
+              <option value="0">0 dp</option>
+              <option value="1">1 dp</option>
+              <option value="2" selected>2 dp</option>
+              <option value="3">3 dp</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div class="converters">
-        <!-- Temperature Converter -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">
@@ -35,18 +45,20 @@
               </div>
               <span>Temperature</span>
             </div>
-            <p class="card-description">Convert between Celsius and Fahrenheit</p>
+            <p class="card-description">Convert between Celsius, Fahrenheit and Kelvin</p>
+
+            <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+              <button id="clear-temp" type="button" style="padding:8px 12px; border-radius:10px; cursor:pointer;">
+                Clear
+              </button>
+            </div>
           </div>
+
           <div class="card-content">
             <div class="input-group">
               <label for="celsius">Celsius</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="celsius" 
-                  placeholder="0"
-                  step="any"
-                >
+                <input type="number" id="celsius" placeholder="0" step="any">
                 <span class="unit">°C</span>
               </div>
             </div>
@@ -56,19 +68,36 @@
             <div class="input-group">
               <label for="fahrenheit">Fahrenheit</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="fahrenheit" 
-                  placeholder="32"
-                  step="any"
-                >
+                <input type="number" id="fahrenheit" placeholder="32" step="any">
                 <span class="unit">°F</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div class="input-group">
+              <label for="kelvin">Kelvin</label>
+              <div class="input-wrapper">
+                <input type="number" id="kelvin" placeholder="273.15" step="any" min="0">
+                <span class="unit">K</span>
+              </div>
+            </div>
+
+            <div class="input-group" style="margin-top: 15px;">
+              <label for="status">Temperature Status</label>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="status" 
+                  placeholder="Freezing" 
+                  style="background: rgba(255,255,255,0.05); cursor: default;" 
+                  readonly
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Distance Converter -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">
@@ -78,17 +107,19 @@
               <span>Distance</span>
             </div>
             <p class="card-description">Convert between Kilometers and Miles</p>
+
+            <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+              <button id="clear-distance" type="button" style="padding:8px 12px; border-radius:10px; cursor:pointer;">
+                Clear
+              </button>
+            </div>
           </div>
+
           <div class="card-content">
             <div class="input-group">
               <label for="kilometers">Kilometers</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="kilometers" 
-                  placeholder="0"
-                  step="any"
-                >
+                <input type="number" id="kilometers" placeholder="0" step="any">
                 <span class="unit">km</span>
               </div>
             </div>
@@ -98,23 +129,91 @@
             <div class="input-group">
               <label for="miles">Miles</label>
               <div class="input-wrapper">
-                <input 
-                  type="number" 
-                  id="miles" 
-                  placeholder="0"
-                  step="any"
-                >
+                <input type="number" id="miles" placeholder="0" step="any">
                 <span class="unit">mi</span>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="icon-badge icon-accent">
+                <span>⚖</span>
+              </div>
+              <span>Measurements</span>
+            </div>
+            <p class="card-description">Convert weight and length</p>
+
+            <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+              <button id="clear-measurements" type="button" style="padding:8px 12px; border-radius:10px; cursor:pointer;">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <h3 style="margin: 0 0 10px;">Weight</h3>
+
+            <div class="input-group">
+              <label for="kg">Kilograms</label>
+              <div class="input-wrapper">
+                <input type="number" id="kg" placeholder="0" step="any">
+                <span class="unit">kg</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div class="input-group">
+              <label for="lbs">Pounds</label>
+              <div class="input-wrapper">
+                <input type="number" id="lbs" placeholder="0" step="any">
+                <span class="unit">lb</span>
+              </div>
+            </div>
+
+            <hr style="margin: 18px 0; opacity: 0.25;">
+
+            <h3 style="margin: 0 0 10px;">Length</h3>
+
+            <div class="input-group">
+              <label for="cm">Centimeters</label>
+              <div class="input-wrapper">
+                <input type="number" id="cm" placeholder="0" step="any">
+                <span class="unit">cm</span>
+              </div>
+            </div>
+
+            <div class="swap-icon">⇄</div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div class="input-group" style="flex: 1; min-width: 140px;">
+                <label for="feet">Feet</label>
+                <div class="input-wrapper">
+                  <input type="number" id="feet" placeholder="0" step="1" min="0">
+                  <span class="unit">ft</span>
+                </div>
+              </div>
+
+              <div class="input-group" style="flex: 1; min-width: 140px;">
+                <label for="inches">Inches</label>
+                <div class="input-wrapper">
+                  <input type="number" id="inches" placeholder="0" step="any" min="0">
+                  <span class="unit">in</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
 
   <script src="conversions.js"></script>
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
