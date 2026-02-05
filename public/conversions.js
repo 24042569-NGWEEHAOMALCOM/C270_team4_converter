@@ -51,6 +51,13 @@ function lbsToKg(lbs) {
   if (typeof lbs !== "number" || Number.isNaN(lbs)) throw new Error("Invalid number");
   return lbs / 2.2046226218;
 }
+/* Export for Jest ( Node.js ) */
+module.exports = {
+  celsiusToFahrenheit,
+  fahrenheitToCelsius,
+  kilometersToMiles,
+  milesToKilometers
+};
 
 // ===== V2.3 Length Conversion Functions =====
 // Returns { feet: integer, inches: number }
